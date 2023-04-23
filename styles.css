@@ -1,5 +1,32 @@
 @import 'postcss.config.js';
 
+body {
+  margin: 0;
+  height: 100vh; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  animation: sparkle 1s linear infinite;
+
+  /* Use CSS variables */
+  --box-color: rgb(37, 5, 74);
+  background-color: var(--box-color);
+
+    transform: translateY(-50%) translateX(-50%);
+    border-radius: 10px;
+    animation: sparkly 2s linear infinite;
+    /* Additional sparkly effect */
+    background-image: radial-gradient(#886e08 5%, transparent 5%),
+                      radial-gradient(#886e08 10%, transparent 10%);
+    background-position: 0 0, 50px 50px;
+    background-size: 100px 100px;
+  }
+
 @keyframes sparkly {
   0%, 100% {
     transform: translateY(-50%) translateX(-50%) rotate(0deg) scale(1);
@@ -7,23 +34,6 @@
   50% {
     transform: translateY(-50%) translateX(-50%) rotate(360deg) scale(2);
   }
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: #240541;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  border-radius: 10px;
-  animation: sparkly 2s linear infinite;
-  /* Additional sparkly effect */
-  background-image: radial-gradient(#fff 5%, transparent 5%),
-                    radial-gradient(#fff 10%, transparent 10%);
-  background-position: 0 0, 50px 50px;
-  background-size: 100px 100px;
 }
 
 body {

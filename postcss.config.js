@@ -1,6 +1,8 @@
 module.exports = {
   plugins: [
-    require('autoprefixer'),
-    require('stylelint')
+    // plugin for importing CSS files
+    require('postcss-import'),
+    // plugin for using modern CSS syntax
+    require('postcss-preset-env'),
   ]
 };
