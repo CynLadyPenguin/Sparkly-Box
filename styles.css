@@ -1,0 +1,31 @@
+@import 'postcss.config.js';
+
+@keyframes sparkly {
+  0%, 100% {
+    transform: translateY(-50%) translateX(-50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-50%) rotate(360deg) scale(2);
+  }
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #240541;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  border-radius: 10px;
+  animation: sparkly 2s linear infinite;
+  /* Additional sparkly effect */
+  background-image: radial-gradient(#fff 5%, transparent 5%),
+                    radial-gradient(#fff 10%, transparent 10%);
+  background-position: 0 0, 50px 50px;
+  background-size: 100px 100px;
+}
+
+body {
+  background-image: url("https://www.textures4photoshop.com/tex/thumbs/animated-sparkle-overlay-for-photoshop-thumb38.gif");
+}
