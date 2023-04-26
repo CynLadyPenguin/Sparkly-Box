@@ -1,6 +1,26 @@
 const postcss = require('postcss');
 const stylelint = require('stylelint');
 
+
+// const css = `
+//   .box {
+//     width: 100px;
+//     height: 100px;
+//   }
+// `;
+
+// //parse the css into an ast
+// const ast = postcss.parse(css);
+// // modify without plugins
+// ast.walkDecls(decl => {
+//   if (decl.prop === 'width' && decl.value === '100px') {
+//     decl.value = '200px';
+//   }
+// });
+// //stringify the ast back to css
+// const outputCss = ast.toString();
+
+
 const css = `
   .box {
     width: 100px;
@@ -8,38 +28,19 @@ const css = `
   }
 `;
 
-postcss([
-  stylelint({
-    rules: {
-      // Specify your stylelint rules here
-      'declaration-property-value': {
-        'width': ['100px']
-      }
-    }
-  }),
-  function (root) {
-    root.walkRules(rule => {
-      if (rule.selector === '.box') {
-        rule.walkDecls(decl => {
-          if (decl.prop === 'width') {
-            decl.value = '200px';
-          }
-        });
-      }
-    });
+const ast = postcss.parse(css);
+// modify without plugins
+ast.walkDecls(decl => {
+  if (decl.prop === 'width' && decl.value === '100px') {
+    decl.value = '200px';
   }
-])
-.process(css, { from: undefined })
-.then(result => {
-  console.log(result.css);
-})
-.catch(error => {
-  console.error(error);
 });
+const result = postcss().process(ast);
 
+// Get the CSS code as a string using the postcss stringifier
+const output = result.css;
 
-
-
+console.log(output);
 
 
 
